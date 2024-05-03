@@ -1,53 +1,46 @@
-import time
-from random import randint
+class Pet:
+    def __init__(self, name, typ, age, says='mew'):
+        self.name = name
+        self.typ = typ
+        self.age = age
+        self.says = says
 
-# t1 = time.time()
-# time.sleep(4)
-# t2 = time.time()
-
-N = 2
-
-# def decorator(func):
-#     def wrapper():
-#         return func()
-#     return wrapper
+    def say(self):
+        print(f'{self.name} говорит: {self.says}. но это {self.typ}')
 
 
-# def time_of(a):
-#     counter = 0
-#     for _ in range(N):
-#         time_1 = time.time()
-#         a()
-#         counter += time.time() - time_1
-#     return counter / N
-
-def time_of(func):
-    def wrapper():
-        summ = 0
-        original = None
-        for _ in range(N):
-            time_1 = time.time()
-            value = func()
-            summ += time.time() - time_1
-            if original is None:
-                original = value
-        print(summ / N)
-        return original
-
-    return wrapper
+    def __str__(self):
+        return f'Pet: {self.name},{self.age}'
 
 
-@time_of
-def foo():
-    r = randint(0, 5)
-    time.sleep(r)
-    return r
 
-@time_of
-def main():
-    a = foo()
-    print(a)
+# pets = [
+#     {
+#         'name': 'Бася',
+#         'type': 'кот',
+#         'age': 8,
+#     },
+#     {
+#         'name': 'Влад',
+#         'type': 'пёс',
+#         'age': 20,
+#     },
+#     {
+#         'name': 'Себастьян',
+#         'type': 'рыба',
+#         'age': 0.5,
+#     },
+# ]
+
+
+pets = [
+    Pet('Бася', 'кот', 8),
+    Pet('Влад', 'пёс', 20, 'гав'),
+    Pet('Себас', 'рыба', 0.5, 'Слава великому Аинзу'),
+]
 
 
 if __name__ == '__main__':
-    main()
+    for pet in pets:
+        pet.say()
+        print(pet.name, pet.says)
