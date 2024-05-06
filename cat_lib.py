@@ -8,13 +8,4 @@ class Cat:
 
     @name.setter
     def name(self, value):
-        z
-
-
-cat = Cat('Барсик')
-
-print(cat.name)
-
-cat.name = 'Маркиз'
-
-print(cat.name)
+        print('Мне нельзя менять имя')
