@@ -6,7 +6,6 @@ from datetime import datetime
 class Post:
     title: str
     text: str
-    date: datetime
 
 
 class Blog:
@@ -29,10 +28,10 @@ class Blog:
 if __name__ == '__main__':
     blog = Blog(author='Vlad', email='vlad@gaz.ru')
     while True:
-        blog.add_post(Post(
+        post = Post(
             title=input('Название >'),
             text=input('Текст >'),
-            date=datetime.now(),
-        ))
+        )
+        blog.add_post(post)
         for index, post in enumerate(blog.get_all_posts()):
             print(f'Пост {index + 1}: {post}')
